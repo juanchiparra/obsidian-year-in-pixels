@@ -1,8 +1,36 @@
-/*
+.year-in-pixels-view-container {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.year-in-pixels-settings {
+	scrollbar-gutter: stable;
+}
 
-If your plugin does not need CSS, delete this file.
+.year-in-pixels-settings-details {
+	margin-bottom: 0.5rem;
+	padding: 0.75rem;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	background-color: var(--background-secondary);
+	box-sizing: border-box;
+}
 
-*/
+.year-in-pixels-settings-summary {
+	font-weight: 600;
+	cursor: pointer;
+	outline: none;
+}
+
+.year-in-pixels-settings-details-content {
+	margin-top: 1rem;
+	box-sizing: border-box;
+}
+
+.year-in-pixels-settings-add-button-container {
+	margin-top: 1rem;
+	display: flex;
+	justify-content: center;
+	padding: 1rem 0;
+}

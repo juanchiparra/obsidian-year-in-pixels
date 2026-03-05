@@ -1,90 +1,61 @@
-# Obsidian Sample Plugin
+# Obsidian Year in Pixels
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+A visual tracking plugin for Obsidian. Year in Pixels reads the frontmatter of your daily notes and generates grid and circular charts to visualize your tracked variables throughout the year.
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+## Features
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open modal (simple)" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+- **Chart layouts**: View your records as a standard horizontal grid or alternative circular layouts
+- **Custom variables tracking**: Tracks user-defined properties from your daily notes frontmatter
+- **Custom date formats**: Supports notes formatted as `YYYY-MM-DD`, `DD-MM-YYYY` and other standard layouts in titles or frontmatter
+- **Color configuration**: Maps frontmatter values to user-defined hex colors
+- **Dual view modes**: Available as a main workspace tab or a compact sidebar view
+- **Interactive interactions**: Hover to view the exact date and logged variables, or click to open the corresponding note
 
-## First time developing plugins?
+## How it Works
 
-Quick starting guide for new plugin devs:
+The plugin looks for notes in a specified target folder (e.g., `Journal/2026`). It expects the note titles or a `date` property to contain a valid date according to your chosen format.
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+To track data, add the variables to your YAML frontmatter:
 
-## Releasing new releases
-
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
-
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
-
-## Adding your plugin to the community plugin list
-
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
-
-## How to use
-
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
-
-## Manually installing the plugin
-
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
-
-## Improve code quality with eslint
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- This project already has eslint preconfigured, you can invoke a check by running`npm run lint`
-- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.
-- A GitHub action is preconfigured to automatically lint every commit on all branches.
-
-## Funding URL
-
-You can include funding URLs where people who use your plugin can financially support it.
-
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
-
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
+```yaml
+---
+date: 2026-05-14
+emotion: joyful
+rating: 5
+energy: high
+---
 ```
 
-If you have multiple URLs, you can also do:
+## Installation (Beta)
 
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
-```
+_Note: The plugin is currently in beta and not yet available in the community store or releases page._
 
-## API Documentation
+To test it locally:
 
-See https://docs.obsidian.md
+1. Clone or download this repository
+2. Run `pnpm install` and `pnpm run build`
+3. Copy `main.js`, `manifest.json`, and `styles.css` to your vault's `.obsidian/plugins/obsidian-year-in-pixels/` folder
+4. Reload Obsidian and enable **Year in Pixels** in **Settings → Community plugins**
+
+## Pre-Release Checklist
+
+Pending tasks before the first official release:
+
+- [ ] Test across different operating systems
+- [ ] Add screenshots or a GIF demonstrating the plugin in action
+- [ ] Finalize versioning and release assets
+
+## Usage
+
+- Use the **grid icon** in the left ribbon to open the main Year in Pixels view
+- Open the Command Palette (`Ctrl/Cmd + P`) to access:
+    - `Open Year in Pixels`: Opens the main visualization tab
+    - `Open Year in Pixels (Sidebar)`: Opens the compact visualization in the right sidebar
+
+## Settings
+
+- **Target folder**: The folder containing your daily notes or journal entries
+- **Date format**: The format used in your note titles or frontmatter dates
+- **Years**: The specific years to visualize
+- **Data & examples**: Generates sample notes to automatically configure and preview the charts
+- **Custom variables**: Defines the frontmatter keys to track, their display names, and the specific color mapping for each possible value
