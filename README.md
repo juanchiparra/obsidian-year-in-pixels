@@ -2,6 +2,8 @@
 
 A visual tracking plugin for Obsidian. Year in Pixels reads the frontmatter of your daily notes and generates grid and circular charts to visualize your tracked variables throughout the year.
 
+![Year in Pixels](year-in-pixels.png)
+
 ## Features
 
 - **Chart layouts**: View your records as a standard horizontal grid or alternative circular layouts
