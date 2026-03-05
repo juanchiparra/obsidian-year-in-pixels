@@ -18,6 +18,7 @@
 		"@types/node": "^16.11.6",
 		"esbuild": "0.25.5",
 		"esbuild-svelte": "^0.9.4",
+		"eslint": "^9.39.3",
 		"eslint-plugin-obsidianmd": "0.1.9",
 		"globals": "14.0.0",
 		"jiti": "2.6.1",
