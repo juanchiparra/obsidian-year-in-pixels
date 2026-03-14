@@ -2,6 +2,7 @@ import {
 	Plugin,
 	ItemView,
 	TFile,
+	normalizePath,
 	moment,
 	type App,
 	type WorkspaceLeaf,
@@ -161,10 +162,11 @@ export default class YearInPixelsPlugin extends Plugin {
 			}
 		} else if (entry.date) {
 			const folder = this.settings.targetFolder;
-			const path =
+			const path = normalizePath(
 				folder && folder !== "/"
 					? `${folder}/${entry.date}.md`
-					: `${entry.date}.md`;
+					: `${entry.date}.md`,
+			);
 			const file = this.app.vault.getAbstractFileByPath(path);
 			if (file && file instanceof TFile) {
 				void this.app.workspace.getLeaf(false).openFile(file);

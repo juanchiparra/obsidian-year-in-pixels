@@ -4,6 +4,7 @@ import {
 	Notice,
 	ButtonComponent,
 	moment,
+	normalizePath,
 	type App,
 } from "obsidian";
 import type YearInPixelsPlugin from "./main";
@@ -71,8 +72,6 @@ export class YearInPixelsSettingTab extends PluginSettingTab {
 		containerEl.addClass("year-in-pixels-settings");
 
 		// Main plugin configuration
-		new Setting(containerEl).setHeading().setName("General settings");
-
 		new Setting(containerEl)
 			.setName("Target folder")
 			.setDesc(
@@ -116,17 +115,16 @@ export class YearInPixelsSettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName("Date format")
 			.setDesc(
-				"Specify the date format used in your note names (or frontmatter 'date'). Use tokens like YYYY-MM-DD or DD-MM-YYYY. Note: Obsidian note titles cannot contain '/'.",
+				"Specify the date format used in your note names (or frontmatter 'date'). Use tokens like yyyy-mm-dd or dd-mm-yyyy. Note: Obsidian note titles cannot contain '/'.",
 			)
 			.addText((text) =>
 				text
-					.setPlaceholder("YYYY-MM-DD")
-					.setValue(this.plugin.settings.dateFormat || "YYYY-MM-DD")
+					.setPlaceholder("Yyyy-mm-dd")
+					.setValue(this.plugin.settings.dateFormat || "yyyy-mm-dd")
 					.onChange(async (value) => {
-						let sanitized = value.trim() || "YYYY-MM-DD";
-						if (sanitized.includes("/")) {
-							sanitized = sanitized.replace(/\//g, "-");
-						}
+						const sanitized = (
+							value.trim() || "yyyy-mm-dd"
+						).replace(/\//g, "-");
 						this.plugin.settings.dateFormat = sanitized;
 						await this.plugin.saveSettings();
 						this.plugin.reRenderAllViews();
@@ -140,7 +138,7 @@ export class YearInPixelsSettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName("Generate sample notes")
 			.setDesc(
-				"Create an 'Example' folder in the vault root with 15 notes (Jan 1-15 of current year) to serve as a guide. This will auto-configure emotion and rating presets if missing.",
+				"Create an 'example' folder in the vault root with 15 notes to serve as a guide. This will auto-configure emotion and rating presets if missing.",
 			)
 			.addButton((button) =>
 				button.setButtonText("Generate").onClick(async () => {
@@ -175,7 +173,7 @@ export class YearInPixelsSettingTab extends PluginSettingTab {
 
 					let createdCount = 0;
 					let format =
-						this.plugin.settings.dateFormat || "YYYY-MM-DD";
+						this.plugin.settings.dateFormat || "yyyy-mm-dd";
 
 					for (let i = 0; i < 15; i++) {
 						// Create consecutive sample notes from Jan 1st to 15th
@@ -186,7 +184,7 @@ export class YearInPixelsSettingTab extends PluginSettingTab {
 						});
 						const dateStr = dateObj.format(format);
 
-						const path = `${folder}/${dateStr}.md`;
+						const path = normalizePath(`${folder}/${dateStr}.md`);
 
 						if (!this.app.vault.getAbstractFileByPath(path)) {
 							const emotion =
