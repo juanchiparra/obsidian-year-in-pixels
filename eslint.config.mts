@@ -23,24 +23,6 @@ export default tseslint.config(
 		},
 	},
 	...obsidianmd.configs.recommended,
-	{
-		plugins: {
-			obsidianmd,
-		},
-		rules: {
-			"obsidianmd/ui/sentence-case": [
-				"error",
-				{
-					ignoreRegex: [
-						"YYYY-MM-DD",
-						"DD-MM-YYYY",
-						"'Example'",
-						"Jan 1-15",
-					],
-				},
-			],
-		},
-	},
 	globalIgnores([
 		"node_modules",
 		"dist",
