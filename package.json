@@ -11,8 +11,21 @@
 		"lint": "eslint .",
 		"svelte-check": "svelte-check --tsconfig tsconfig.json"
 	},
-	"keywords": [],
+	"keywords": [
+		"obsidian",
+		"obsidian-plugin",
+		"year in pixels",
+		"visualization",
+		"habit tracker",
+		"calendar",
+		"journal"
+	],
 	"license": "MIT",
+	"author": "Juanchi Parra",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/juanchiparra/obsidian-year-in-pixels.git"
+	},
 	"devDependencies": {
 		"@eslint/js": "9.30.1",
 		"@types/node": "^16.11.6",
@@ -27,7 +40,7 @@
 		"svelte-preprocess": "^6.0.3",
 		"tslib": "2.4.0",
 		"typescript": "^5.8.3",
-		"typescript-eslint": "8.35.1"
+		"typescript-eslint": "8.56.1"
 	},
 	"dependencies": {
 		"obsidian": "latest"
