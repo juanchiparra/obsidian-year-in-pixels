@@ -33,7 +33,7 @@ export default class YearInPixelsPlugin extends Plugin {
 			(leaf) => new YearInPixelsView(leaf, this.app, this),
 		);
 
-		// Register the sidebar mini view
+		// Register the sidebar mini viewpnpm i eslint --save-dev
 		this.registerView(
 			VIEW_TYPE_PIXELS_SIDEBAR,
 			(leaf) => new YearInPixelsSidebarView(leaf, this.app, this),
@@ -205,12 +205,12 @@ class YearInPixelsView extends ItemView {
 		return "calendar";
 	}
 
-	async onOpen() {
+	async onOpen(): Promise<void> {
 		const container = this.contentEl;
 		container.empty();
 		container.addClass("year-in-pixels-view-container");
 
-		void this.render();
+		await this.render();
 
 		// Watch for file changes to automatically update the chart
 		this.registerEvent(
@@ -257,8 +257,8 @@ class YearInPixelsView extends ItemView {
 	}
 
 	// Unmounts and remounts the Svelte component with fresh data
-	async refresh() {
-		const entries = await this.getEntriesFromNotes(this.currentYear());
+	refresh() {
+		const entries = this.getEntriesFromNotes(this.currentYear());
 		this.entriesStore.set(entries);
 	}
 
@@ -267,7 +267,7 @@ class YearInPixelsView extends ItemView {
 			await unmount(this.component);
 			this.component = null;
 		}
-		const entries = await this.getEntriesFromNotes(this.currentYear());
+		const entries = this.getEntriesFromNotes(this.currentYear());
 		this.entriesStore.set(entries);
 		const container = this.contentEl;
 		container.empty();
@@ -305,7 +305,7 @@ class YearInPixelsView extends ItemView {
 	}
 
 	// Scans the vault for notes in the target folder, extracts emotion/rating data from the frontmatter, and fills in missing days for the selected year
-	async getEntriesFromNotes(targetYear?: number): Promise<Entry[]> {
+	getEntriesFromNotes(targetYear?: number): Entry[] {
 		const rawEntries = new Map<string, Entry>();
 		const files = this.app.vault.getMarkdownFiles();
 		const targetFolder = this.plugin.settings.targetFolder?.trim();
@@ -474,7 +474,7 @@ class YearInPixelsSidebarView extends YearInPixelsView {
 			await unmount(this.component);
 			this.component = null;
 		}
-		const entries = await this.getEntriesFromNotes();
+		const entries = this.getEntriesFromNotes();
 		this.entriesStore.set(entries);
 		const container = this.contentEl;
 		container.empty();
