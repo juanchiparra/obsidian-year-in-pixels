@@ -33,7 +33,7 @@ export default class YearInPixelsPlugin extends Plugin {
 			(leaf) => new YearInPixelsView(leaf, this.app, this),
 		);
 
-		// Register the sidebar mini viewpnpm i eslint --save-dev
+		// Register the sidebar mini view
 		this.registerView(
 			VIEW_TYPE_PIXELS_SIDEBAR,
 			(leaf) => new YearInPixelsSidebarView(leaf, this.app, this),
