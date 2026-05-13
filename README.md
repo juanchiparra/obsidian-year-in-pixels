@@ -28,25 +28,6 @@ energy: high
 ---
 ```
 
-## Installation (Beta)
-
-_Note: The plugin is currently in beta and not yet available in the community store or releases page._
-
-To test it locally:
-
-1. Clone or download this repository
-2. Run `pnpm install` and `pnpm run build`
-3. Copy `main.js`, `manifest.json`, and `styles.css` to your vault's `.obsidian/plugins/obsidian-year-in-pixels/` folder
-4. Reload Obsidian and enable **Year in Pixels** in **Settings → Community plugins**
-
-## Pre-Release Checklist
-
-Pending tasks before the first official release:
-
-- [ ] Test across different operating systems
-- [ ] Add screenshots or a GIF demonstrating the plugin in action
-- [ ] Finalize versioning and release assets
-
 ## Usage
 
 - Use the **grid icon** in the left ribbon to open the main Year in Pixels view
