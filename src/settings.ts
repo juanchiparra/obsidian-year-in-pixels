@@ -234,7 +234,7 @@ export class YearInPixelsSettingTab extends PluginSettingTab {
 						`Created ${createdCount} sample notes in the 'Example' folder!`,
 					);
 
-					setTimeout(() => {
+					activeWindow.setTimeout(() => {
 						this.plugin.reRenderAllViews();
 						this.display();
 					}, 1000);

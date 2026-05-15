@@ -249,9 +249,9 @@ class YearInPixelsView extends ItemView {
 	// Debounces the refresh operation to prevent multiple rapid re-renders when many files change at once or when typing
 	requestRefresh() {
 		if (this.refreshTimeout) {
-			clearTimeout(this.refreshTimeout);
+			activeWindow.clearTimeout(this.refreshTimeout);
 		}
-		this.refreshTimeout = setTimeout(() => {
+		this.refreshTimeout = activeWindow.setTimeout(() => {
 			void this.refresh();
 		}, 500);
 	}
@@ -297,7 +297,7 @@ class YearInPixelsView extends ItemView {
 
 	async onClose() {
 		if (this.refreshTimeout) {
-			clearTimeout(this.refreshTimeout);
+			activeWindow.clearTimeout(this.refreshTimeout);
 		}
 		if (this.component) {
 			await unmount(this.component);
