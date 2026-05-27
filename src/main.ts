@@ -183,7 +183,7 @@ class YearInPixelsView extends ItemView {
 	app: App;
 	plugin: YearInPixelsPlugin;
 	entriesStore: Writable<Entry[]>;
-	refreshTimeout: ReturnType<typeof setTimeout> | null = null;
+	refreshTimeout: number | null = null;
 	currentYearIndex: number = 0;
 
 	constructor(leaf: WorkspaceLeaf, app: App, plugin: YearInPixelsPlugin) {
