@@ -1,7 +1,7 @@
 {
 	"id": "year-in-pixels",
 	"name": "Year in Pixels",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "1.11.4",
 	"description": "Visualize your year in pixels using metadata from your notes.",
 	"author": "Juanchi Parra",
