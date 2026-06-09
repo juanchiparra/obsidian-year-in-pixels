@@ -203,7 +203,7 @@
 			<button
 				class="toggle-mode-btn clickable-icon"
 				on:click={toggleDrawMode}
-				aria-label="Toggle between Emotion and Rating colors"
+				aria-label="Toggle draw mode"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
